@@ -322,8 +322,16 @@
                     window.location.href = window.location.href;
                 }
                 const enter_active = $el(doc, '.enter-active');
+                enter_active.addEventListener('touchend', start)
+                function start() {
+                    handler();
+                }
                 enter_active.onclick = () => {
+                    handler();
+                }
+                function handler() {
                     sepaking();
+                    enter_active.removeEventListener('touchend', start);
                     enter_active.onclick = null;
                     const ele_p = $el($el(doc, '.layout-wrap-box'), 'p');
                     ele_p.className = 'top';
