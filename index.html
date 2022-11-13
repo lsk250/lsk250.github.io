@@ -15,7 +15,7 @@
         body {
             width: 100%;
             height: 100%;
-            user-select: none;
+            background-color: #333;
         }
         a {
             text-decoration: none;
@@ -30,24 +30,42 @@
             clear: both;
         }
         #app {
-            display: grid;
-            grid-template-columns: 1fr 1.2fr;
             width: 100%;
-            overflow: hidden;
+            margin: 0 auto;
+            overflow-x: hidden;
             background-color: #1cbbb4;
         }
+        .app_layout_pc {
+            width: 90% !important;
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+        }
+        .app_layout_mobile {
+            display: flex;
+            flex-direction: column;
+            padding: 4px;
+            box-sizing: border-box;
+        }
         .layout-title {
-            grid-column: span 2;
             width: 100%;
             background-color: rgb(27, 144, 144, .7);
             border-bottom: 2px solid black;
             margin-bottom: 10px;
         }
+        .layout-title-pc {
+            grid-column: span 2;
+        }
+        .layout-title-mobile {
+            min-height: auto;
+        }
         .layout-title > h1 {
-            margin-left: 4px;
             padding: 6px 0;
         }
-        .layout-wrap-menber-info {
+        .layout-title > h1 a {
+            margin-right: 20px;
+        }
+        .layout-title > h1:hover a {color: orange;}
+        /* .layout-wrap-menber-info {
             display: flex;
             flex-direction: column;
             padding: 20px;
@@ -60,6 +78,10 @@
             gap: 20px;
             background-image: linear-gradient(45deg, #0081ff, #1cbbb4);
             opacity: .9;
+        } */
+        .layout-wrap-menber-info {
+            display: flex;
+            flex-direction: column;
         }
         .layout-wrap-menber-info > ul {
             display: flex;
@@ -74,23 +96,29 @@
             height: 100%;
         }
         .layout-wrap-box {overflow: hidden;}
+        .layout-wrap-box-pc {
+            min-height: 200px;
+        }
+        .layout-wrap-box-mobile {
+            min-height: 150px;
+        }
         .enter-active {
+            display: block;
+            color: orange;
+            text-shadow: 0px 3px 2px rgba(231, 82, 82, 0.947);
+            transform: scale(1.1) translateY(10px);
             font-size: 2em;
             font-weight: bolder;
             font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
             cursor: pointer;
             transition: .4s ease;
+            user-select: none;
         }
         .enter-active:hover {
-            display: block;
-            color: orange;
-            text-shadow: 0px 3px 2px rgba(231, 82, 82, 0.947);
-            transform: scale(1.1);
+            border-bottom: 4px solid orange;
         }
         .enter-active span {
             display: inline-block;
-        }
-        .enter-active:hover span {
             transition: .1s linear;
             animation: jumpFont 2.4s infinite linear;
             animation-delay: calc(.3s * var(--index));
@@ -119,9 +147,22 @@
             transform: translateY(calc(100% + 40px));
             opacity: 0;
             transition: 1s all ease-in-out;
+            font-size: larger;
         }
         .section {
             grid-column: span 2;
+        }
+        .section p {
+            text-indent: 2em;
+            line-height: 2em;
+        }
+    </style>
+    <style>
+        @media screen and (max-width: 600px) {
+            html {font-size: 16px;}
+        }
+        @media screen and (max-width: 400px) {
+            html {font-size: 12px;}
         }
     </style>
 </head>
@@ -129,12 +170,12 @@
     <div id="app">
         <div class="layout-title">
             <h1>
-                <a href="javascript:;" class="title">“三高”的检验知识科普</a>
+                <a href="javascript:;" class="title right">“三高”的检验知识科普</a>
             </h1>
         </div>
         <div class="layout-wrap-menber-info">
             <span>
-                <h2>小组成员:</h2>
+                <h2 style="font-size: 20px;">小组成员:</h2>
             </span>
             <ul>
                 <li>黄锦浩、</li>
@@ -163,40 +204,77 @@
             </div>
         </div>
         <div class="section">
-            “三高”之所以被人们熟知是因为“三高”是老年人比较经常患得，因为我国进入了老龄化社会所以我国“三高”的人群变的越来越多
-            所以我们组想借科普竞赛为全国科普“三高”带来的危害和如何预防检验。“三高”指的是高血压、高血糖、高血脂。
-        
-            据国务院新闻办公室发布的《中国居民营养与慢性病状况报告（2020年）》
-            最新数据显示，目前我国18岁及以上居民高血压患病率为27.5%，糖尿病患病率为11.9%，
-            高胆固醇血症患病率为8.2%。由于我国人口基数达到14亿人，
-            因此三高人群的绝对数量是非常庞大的，而三高人群所产生的潜在的心血管疾病危害是巨大的。
-            随着经济条件的改善，人民的生活水平也跟着提高，人民的物质条件也在增长，
-            不像上世纪的六七十年代吃不饱、穿不暖，现在营养过剩是很普遍的问题也是导致“三高”的重要问题。
-            饮食结构的变化。中国的南方以大米为主食北方以面为主食，以猪肉主要消费肉源。
-            同时中国大部分地区强调食物的口味，多数菜重油重盐，长期重油重盐饮食习惯，
-            这种饮食结构对心脏和血管的负担极其巨大。
-            缺少运动，正所谓运动可以提高人体的免疫力，也可以让身体的机能得到改善，
-            肥胖人群是“三高”的高发人群所以我们要远离肥胖需要运动来调节身体。
-            “三高”带来的危害是出现并发症，如心脑血管疾病的并发症和眼底视网膜病变。
-            患病的人可能会心肌梗死这是很严重的疾病还会对肾脏产生影响，
-            还可能会患上糖尿病如果长期没有得到很好的饮食控制会出现糖尿病周围神经病变，
-            糖尿病周围血管病变这些情况，甚至有些人还会出现糖尿病足，糖尿病肾病，
-            糖尿病性心肌病等。三高的病人一定要注意饮食，低脂、低盐、低糖，注意适量运动。
-            “三高”也是有很多方法预防的在情绪方面要保持乐观的心态，饮食方面合理膳食，
-            多吃蔬菜水果，少糖和盐避免烟酒，养成良好的作息规律。合理的进行运动调节身体，
-            定期的检查血压。
-            如何检验可以直接进行血压的测量，也可以进行24小时的动态血压检测。
-            多次非同一日测量血压高于140 90毫米汞柱，可以诊断高血压。
-            高血脂可以空腹抽血检查，包括总胆固醇，甘油三酯，低密度脂蛋白，
-            高密度脂蛋白。血糖的检查一般是空腹血糖检查，餐后2小时血糖检测等。
-            空腹血糖高于6.1mmol/L，餐后2小时血糖高于7.8mmol/L，称为高血糖.
-            总之如果你是想变成“三高”人群是很容易的，要是不想就要注意身体，
-            祝每一位读者远离“三高”，拥有健康的身体。
+            <p>
+                “三高”之所以被人们熟知是因为“三高”是老年人比较经常患得，
+                因为我国进入了老龄化社会所以我国“三高”的人群变的越来越多
+                所以我们组想借科普竞赛为全国科普“三高”带来的危害和如何预防检验。
+            </p>
+            <p>
+                “三高”指的是高血压、高血糖、高血脂。
+            </p>
+            <p>
+                据国务院新闻办公室发布的《中国居民营养与慢性病状况报告（2020年）》
+                最新数据显示，目前我国18岁及以上居民高血压患病率为27.5%，糖尿病患病率为11.9%，
+                高胆固醇血症患病率为8.2%。由于我国人口基数达到14亿人，
+                因此三高人群的绝对数量是非常庞大的，而三高人群所产生的潜在的心血管疾病危害是巨大的。
+            </p>
+            <p>
+                随着经济条件的改善，人民的生活水平也跟着提高，人民的物质条件也在增长，
+                不像上世纪的六七十年代吃不饱、穿不暖，现在营养过剩是很普遍的问题也是导致“三高”的重要问题。
+            </p>
+            <p>
+                饮食结构的变化。中国的南方以大米为主食北方以面为主食，以猪肉主要消费肉源。
+                同时中国大部分地区强调食物的口味，多数菜重油重盐，长期重油重盐饮食习惯，
+                这种饮食结构对心脏和血管的负担极其巨大。
+            </p>
+            <p>
+                缺少运动，正所谓运动可以提高人体的免疫力，也可以让身体的机能得到改善，
+                肥胖人群是“三高”的高发人群所以我们要远离肥胖需要运动来调节身体。
+            </p>
+            <p>
+                “三高”带来的危害是出现并发症，如心脑血管疾病的并发症和眼底视网膜病变。
+                患病的人可能会心肌梗死这是很严重的疾病还会对肾脏产生影响，
+                还可能会患上糖尿病如果长期没有得到很好的饮食控制会出现糖尿病周围神经病变，
+                糖尿病周围血管病变这些情况，甚至有些人还会出现糖尿病足，糖尿病肾病，
+                糖尿病性心肌病等。
+            </p>
+            <p>
+                三高的病人一定要注意饮食，低脂、低盐、低糖，注意适量运动。
+                “三高”也是有很多方法预防的在情绪方面要保持乐观的心态，饮食方面合理膳食，
+                多吃蔬菜水果，少糖和盐避免烟酒，养成良好的作息规律。合理的进行运动调节身体，
+                定期的检查血压。
+            </p>
+            <p>
+                如何检验可以直接进行血压的测量，也可以进行24小时的动态血压检测。
+                多次非同一日测量血压高于140 90毫米汞柱，可以诊断高血压。
+                高血脂可以空腹抽血检查，包括总胆固醇，甘油三酯，低密度脂蛋白，
+                高密度脂蛋白。血糖的检查一般是空腹血糖检查，餐后2小时血糖检测等。
+                空腹血糖高于6.1mmol/L，餐后2小时血糖高于7.8mmol/L，称为高血糖.
+                总之如果你是想变成“三高”人群是很容易的，要是不想就要注意身体.
+            </p>
+            <h4 class="right" style="margin-top: 6px;">
+                祝每一位读者远离“三高”，拥有健康的身体。
+            </h4>
         </div>
         <script>
             window.onload = () => {
                 window.onload = null;
                 
+                const sepaking = () => {
+                    this.speech = new SpeechSynthesisUtterance();
+                    const section = $el(doc, '.section');
+                    let content = '';
+                    [].forEach.call(section.children, node => {
+                        content += node.textContent;
+                    });
+                    const speech = this.speech;
+                    speech.text = content;
+                    speech.pitch = 1; // 音调(0-2 默认1 值越大越尖锐)
+                    speech.rate = 1; // 说话的速度(0.1 - 10 默认1，值越大语速越快)
+                    speech.volume = 10 // 设置说话的音量
+                    speech.lang = 'zh-CN' // 语言
+                    speechSynthesis.speak(speech) // 调用接口
+                }
                 const doc = document,
                 log = console.log;
                 function $el( target, select, isAll ) {
@@ -217,20 +295,190 @@
                         log(err);
                     }
                 }
+                const app = $el(doc, '#app'),
+                title = $el(doc, '.layout-title'),
+                menber_info = $el(doc, '.layout-wrap-menber-info'),
+                box = $el(doc, '.layout-wrap-box');
+                function styleSheets( args ) {
+                        app.classList.add(args[0]);
+                        title.classList.add(args[1]);
+                        box.classList.add(args[2])
+                }
+                function removeStyleSheets( args ) {
+                    app.classList.remove(args[0]);
+                    title.classList.remove(args[1]);
+                    box.classList.remove(args[2]);
+                }
+                const pcstyle = ['app_layout_pc', 'layout-title-pc', 'layout-wrap-box-pc'],
+                mobstyle = ['app_layout_mobile', 'layout-title-mobile', 'layout-wrap-box-mobile'];
+                (()=>{
+                    if(window.screen.availWidth < 712) {
+                        styleSheets(mobstyle);
+                    } else {
+                        styleSheets(pcstyle);
+                    }
+                })()
                 $el(doc, '.title').onclick = () => {
                     window.location.href = window.location.href;
                 }
                 const enter_active = $el(doc, '.enter-active');
                 enter_active.onclick = () => {
+                    sepaking();
                     enter_active.onclick = null;
                     const ele_p = $el($el(doc, '.layout-wrap-box'), 'p');
                     ele_p.className = 'top';
                     ele_p.style.opacity = 1;
                 }
-                
+                $el(doc, '.section').style.height = `${window.screen.availHeight - title.getBoundingClientRect().height - menber_info.getBoundingClientRect().height}px`;
+                /**
+ * @params { maxLength? }: number
+ */
+ class Queue {
+    #list;
+    constructor(options) {
+        this.maxLength = options instanceof Array && typeof options[0] === 'number' && options[0] || 0;
+        this.#list = new Array();
+        this.size = 0;
+    }
+    append(node) {
+        if(this.maxLength) {
+            if(this.maxLength <= this.size) return console.err(`MaxSize:${this.maxLength}!!!`);
+        }
+        this.#list.push(node);
+        this.size = this.#list.length;
+    }
+    remove() {
+        const item = this.#list.shift();
+        this.size = this.#list.length;
+        return item;
+    }
+    head() {
+        return this.#list[0];
+    }
+    last() {
+        if(this.size <= 0) return undefined;
+        return this.#list[this.size - 1];
+    }
+    show() {
+        return void console.log(this.#list);
+    }
+    toString() {
+        let str = "";
+        // const getStr = ()=>{
+        //     this.#list.forEach(item=> str+=item+',');
+        //     str[str.lastIndexOf(',')] = '';
+        //     return str;
+        // }
+        // return `[
+        //     ${
+        //         getStr()
+        //     }
+        // ]`;
+    }
+    newQueue = this.newArray;
+    newArray() {
+        return new Queue();
+    }
+}
+const state = ["wait", "empty"]
+class Throttle extends Queue {
+    #method;
+    #queue;
+    constructor(options) {
+        super(options)
+        this.state = state[1];
+        this.#queue = this.newArray();
+        this.#method = ["frame", "outage", "timestamp", "debounce"];
+    }
+    wait(fun, timing, mode, params) {
+        arguments.length > 1 && arguments.length < 3 && typeof timing === 'string' ? (mode = timing) : void 0;
+        typeof fun === 'function' ? void 0 : console.error("params type error");
+        switch(mode) {
+            case this.#method[0]:
+                this.frame(fun, timing);
+            break;
+            case this.#method[1]:
+                this.outage(fun);
+            break;
+            case this.#method[2]:
+                this.timestamp(fun);
+            break;
+            case this.#method[3]:
+                this.debounce(fun, timing, params);
+            break;
+            default:
+                this.frame(fun, timing);
+            break;
+        }
+        return this;
+    }
+    // 指定经过多少时间执行一次
+    // 帧模式
+    frame(fun, timing) {
+        if(this.state == state[1]) {
+            fun();
+            this.state = state[0];
+            setTimeout(()=>{
+                this.state = state[1];
+            }, timing)
+        } else {
+            return ;
+        }
+    }
+    // 指定何时执行且执行一次
+    // 中断模式
+    outage(fun) {
 
+    }
+    // 指定执行完当前任务才执行下一次
+    // 时间戳模式
+    timestamp(fun) {
+        this.append(fun);
+    }
+    start() {
+        let back = ()=> {
+            if(this.size) {
+                this.remove()(()=>{
+                    return back();
+                }, new Date().getTime())
             }
-            
+        }
+        back();
+        return this;
+    }
+    // 指定多少时间内重复调用不执行
+    // 防抖模式
+    debounce(fun, timeout, queue) {
+        if(queue) {
+            queue.head() && clearTimeout(queue.remove());
+            queue.append(setTimeout(()=>{
+                return fun();
+            }, timeout));
+        } else {
+            console.warn("这样做会污染对象的全局属性，请尽量使用Throttle.newArray / Throttle.newQueue方法来获取任务参数");
+            this.#queue.head() && clearTimeout(this.#queue.remove());
+            this.#queue.append(setTimeout(()=>{
+                return fun();
+            }, timeout));
+        }
+    }
+    getMode() {
+        return this.#method;
+    }
+}
+                const thr = new Throttle();
+                window.addEventListener('resize', () => {
+                    thr.wait(() => {
+                        if(window.screen.availWidth < 712) {
+                            removeStyleSheets(pcstyle);
+                            styleSheets(mobstyle);
+                        } else {
+                            removeStyleSheets(mobstyle);
+                            styleSheets(pcstyle);
+                        }
+                    }, 50, "frame");
+                })
+            }
         </script>
     </div>
 </body>
