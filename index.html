@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            border: 0;
+        }
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+            user-select: none;
+        }
+        a {
+            text-decoration: none;
+        }
+        li {
+            list-style: none;
+        }
+        .right {
+            float: right;
+        }
+        .right::before {
+            clear: both;
+        }
+        #app {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            width: 100%;
+            overflow: hidden;
+            background-color: #1cbbb4;
+        }
+        .layout-title {
+            grid-column: span 2;
+            width: 100%;
+            background-color: rgb(27, 144, 144, .7);
+            border-bottom: 2px solid black;
+            margin-bottom: 10px;
+        }
+        .layout-title > h1 {
+            margin-left: 4px;
+            padding: 6px 0;
+        }
+        .layout-wrap-menber-info {
+            display: flex;
+            flex-direction: column;
+            padding: 20px;
+            max-width: 300px;
+            min-height: 240px;
+            padding-right: 0;
+            outline: 1px solid rgba(255, 255, 255, .3);
+            box-shadow: 0px 0px 2px 2px rgba(0, 0, 0, .2);
+            backdrop-filter: blur(2px);
+            gap: 20px;
+            background-image: linear-gradient(45deg, #0081ff, #1cbbb4);
+            opacity: .9;
+        }
+        .layout-wrap-menber-info > ul {
+            display: flex;
+            flex-flow: wrap row;
+            font-weight: bold;
+        }
+        .layout-wrap-menber-info > ul li {
+            font-size: x-large;
+        }
+        .layout-wrap-box > div {
+            position: relative;
+            height: 100%;
+        }
+        .layout-wrap-box {overflow: hidden;}
+        .enter-active {
+            font-size: 2em;
+            font-weight: bolder;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            cursor: pointer;
+            transition: .4s ease;
+        }
+        .enter-active:hover {
+            display: block;
+            color: orange;
+            text-shadow: 0px 3px 2px rgba(231, 82, 82, 0.947);
+            transform: scale(1.1);
+        }
+        .enter-active span {
+            display: inline-block;
+        }
+        .enter-active:hover span {
+            transition: .1s linear;
+            animation: jumpFont 2.4s infinite linear;
+            animation-delay: calc(.3s * var(--index));
+        }
+        @keyframes jumpFont {
+            0% {
+                transform: translateY(0);
+            }
+            45% {
+                transform: translateY(-.2em);
+            }
+            70% {
+                transform: translateY(-.4em);
+            }
+            100% {
+                transform: translateY(0);
+            }
+        }
+        .bottom {top: 100%;}
+        .top {top: 0;}
+        .enter-active ~ p {
+            position: absolute;
+            display: inline-block;
+            width: calc(100% - 4em);
+            margin-left: 2em;
+            transform: translateY(calc(100% + 40px));
+            opacity: 0;
+            transition: 1s all ease-in-out;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <div class="layout-title">
+            <h1>
+                <a href="javascript:;" class="title">“三高”的检验知识科普</a>
+            </h1>
+        </div>
+        <div class="layout-wrap-menber-info">
+            <span>
+                <h2>小组成员:</h2>
+            </span>
+            <ul>
+                <li>黄锦浩、</li>
+                <li>黄钰科、</li>
+                <li>黄礎苇、</li>
+                <li>黄超荣、</li>
+                <li>黎慧琳</li>
+            </ul>
+        </div>
+        <div class="layout-wrap-box">
+            <div>
+                <a href="javascript:void 0;" class="right enter-active">
+                    <span style="--index:0">为</span>
+                    <span style="--index:1">什</span>
+                    <span style="--index:2">么</span>
+                    <span style="--index:3">容</span>
+                    <span style="--index:4">易</span>
+                    <span style="--index:5">三</span>
+                    <span style="--index:6">高</span>
+                    <span style="--index:7">？</span>
+                </a>
+                <p class="bottom">
+                    随着生活的提高人们在饮食方面很少注意量的
+                    多少这样就会导致有些人会被“三高”所困扰。
+                </p>
+            </div>
+        </div>
+        “三高”之所以被人们熟知是因为“三高”是老年人比较经常患得，因为我国进入了老龄化社会所以我国“三高”的人群变的越来越多
+        所以我们组想借科普竞赛为全国科普“三高”带来的危害和如何预防检验。“三高”指的是高血压、高血糖、高血脂。
+        
+        据国务院新闻办公室发布的《中国居民营养与慢性病状况报告（2020年）》
+        最新数据显示，目前我国18岁及以上居民高血压患病率为27.5%，糖尿病患病率为11.9%，
+        高胆固醇血症患病率为8.2%。由于我国人口基数达到14亿人，
+        因此三高人群的绝对数量是非常庞大的，而三高人群所产生的潜在的心血管疾病危害是巨大的。
+        随着经济条件的改善，人民的生活水平也跟着提高，人民的物质条件也在增长，
+        不像上世纪的六七十年代吃不饱、穿不暖，现在营养过剩是很普遍的问题也是导致“三高”的重要问题。
+        饮食结构的变化。中国的南方以大米为主食北方以面为主食，以猪肉主要消费肉源。
+        同时中国大部分地区强调食物的口味，多数菜重油重盐，长期重油重盐饮食习惯，
+        这种饮食结构对心脏和血管的负担极其巨大。
+        缺少运动，正所谓运动可以提高人体的免疫力，也可以让身体的机能得到改善，
+        肥胖人群是“三高”的高发人群所以我们要远离肥胖需要运动来调节身体。
+        “三高”带来的危害是出现并发症，如心脑血管疾病的并发症和眼底视网膜病变。
+        患病的人可能会心肌梗死这是很严重的疾病还会对肾脏产生影响，
+        还可能会患上糖尿病如果长期没有得到很好的饮食控制会出现糖尿病周围神经病变，
+        糖尿病周围血管病变这些情况，甚至有些人还会出现糖尿病足，糖尿病肾病，
+        糖尿病性心肌病等。三高的病人一定要注意饮食，低脂、低盐、低糖，注意适量运动。
+        “三高”也是有很多方法预防的在情绪方面要保持乐观的心态，饮食方面合理膳食，
+        多吃蔬菜水果，少糖和盐避免烟酒，养成良好的作息规律。合理的进行运动调节身体，
+        定期的检查血压。
+        如何检验可以直接进行血压的测量，也可以进行24小时的动态血压检测。
+        多次非同一日测量血压高于140 90毫米汞柱，可以诊断高血压。
+        高血脂可以空腹抽血检查，包括总胆固醇，甘油三酯，低密度脂蛋白，
+        高密度脂蛋白。血糖的检查一般是空腹血糖检查，餐后2小时血糖检测等。
+        空腹血糖高于6.1mmol/L，餐后2小时血糖高于7.8mmol/L，称为高血糖.
+        总之如果你是想变成“三高”人群是很容易的，要是不想就要注意身体，
+        祝每一位读者远离“三高”，拥有健康的身体。
+        <script>
+            window.onload = () => {
+                window.onload = null;
+                
+                const doc = document,
+                log = console.log;
+                function $el( target, select, isAll ) {
+                    if(!arguments.length) return void 0;
+                    try {
+                        if(target != doc) {
+                            let errmsg = void 0;
+                            const errobj = new Error('TypeError: params need NodeElement type');
+                            target instanceof Node ? typeof select === 'string' ?
+                            void 0 : (errmsg = errobj) : (errmsg = errobj);
+                            if(errmsg) throw errmsg;
+                        }
+                        if(isAll) {
+                            return target.querySelectorAll(select);
+                        }
+                        return target.querySelector(select);
+                    } catch(err) {
+                        log(err);
+                    }
+                }
+                $el(doc, '.title').onclick = () => {
+                    window.location.href = window.location.href;
+                }
+                const enter_active = $el(doc, '.enter-active');
+                enter_active.onclick = () => {
+                    enter_active.onclick = null;
+                    const ele_p = $el($el(doc, '.layout-wrap-box'), 'p');
+                    ele_p.className = 'top';
+                    ele_p.style.opacity = 1;
+                }
+                
+
+            }
+            
+        </script>
+    </div>
+</body>
+</html>
